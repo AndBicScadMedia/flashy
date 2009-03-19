@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Palantir video</title>
+    <script type="text/javascript" src="swfobject.js"></script>
+</head>
+
+<body>
+
+<div id="palantir1">
+  Stand-in text.
+</div>
+<hr />
+<script type="text/javascript">
+   var so1 = new SWFObject("videoPlayer.swf", "palantirVideoPlayer", "320", "180", "8", "#000000");
+   so1.addVariable("videoFile", "a.flv");
+   so1.addVariable("autoPlay", "true");
+   so1.addVariable("volume", "20");
+   so1.write("palantir1");
+</script>
+
+<div id="palantir2">
+  Stand-in text.
+</div>
+<hr />
+<script type="text/javascript">
+   var so2 = new SWFObject("videoPlayer.swf", "palantirVideoPlayer", "480", "270", "8", "#000000");
+   so2.addVariable("videoFile", "b.flv");
+   so2.addVariable("autoPlay", "false");
+   so2.write("palantir2");
+</script>
+
+<div id="palantir3">
+  Stand-in text.
+</div>
+<script type="text/javascript">
+   var so3 = new SWFObject("videoPlayer.swf", "palantirVideoPlayer", "160", "90", "8", "#000000");
+   so3.addVariable("videoFile", "c.flv");
+   so3.addVariable("autoPlay", "false");
+   so3.write("palantir3");
+</script>
+
+</body>
+</html>
