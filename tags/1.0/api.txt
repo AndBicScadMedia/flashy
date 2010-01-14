@@ -1,0 +1,105 @@
+Most configuration of the Flashy video player is done through FlashVars.  A
+basic list of supported properties follows.  Sample code implies the use of
+swfobject, but Flashy is compatible with swfobject and swfembed or even
+straight HTML.
+
+For use with Drupal, use the Flashy module and the dependent SWFEmbed module:
+
+[1] http://drupal.org/project/flashy
+[1] http://drupal.org/project/swfembed
+
+video
+  so.addVariable("video", "video.flv");
+
+Specifies a single video file to play.  This parameter is optional, but if absent,
+video player depends on the playlist parameter.  The value may contain a fully
+qualified or relative file path.  In terms of Flash Player, relative paths take
+their point of view from the HTML document that houses in the SWF, except in the
+case of video:  video files take their point of view from the SWF itself.
+
+poster
+  so.addVariable("poster", "poster.jpg");
+
+Specifies a poster image (stand-in frame) for a single video file.  This
+parameter is optional.
+
+playlist
+  so.addVariable("playlist", "playlist.xml");
+
+Specifies an XSPF-formatted XML playlist for a series of video files.  This
+parameter is optional, but if absent, video player depends on the video parameter.
+The value may contain a fully qualified or relative file path.  In terms of Flash
+Player, relative paths take their point of view from the HTML document that houses
+in the SWF.  If the video parameter is set in addition to the playlist parameter,
+the additional single video is prepended to the playlist.  See the included
+playlist.xml file for an example.
+
+uiAutoHide
+  so.addVariable("uiAutoHide", "true");
+
+Determines whether playback controls auto hide (true) or always show (false).
+This parameter is optional.  Only applies when controls are present.  Auto hide
+means controls show when the user moves the mouse over the video player.
+Default is false.
+
+uiControls
+  so.addVariable("uiControls", "PlayPause|Prev|Next|Seek|Volume|FullScreen|MuteUnmute");
+
+Determines which playback controls to display, and in what order.  This parameter
+is optional.  The value is a pipe-delimited string, as shown.  To specify no
+controls, set the value to none.  Video player will only show Prev and Next
+buttons if a playlist is specified, even if those buttons are configured as part
+of the value.  Video player will only show FullScreen button if Flash Player 9.0.115.0
+or higher is installed, even if that button is configured as part of the value.
+Default configuration is as shown.
+
+uiColors
+  so.addVariable("uiColors", "#734D26|#734D26|#734D26|#734D26|#734D26|#734D26|#734D26");
+
+Determines foreground color of playback controls in hexadecimal value.  This
+parameter is optional.  The value is a pipe-delimited string, as shown.  This
+list parallels the list in the uiControls parameter.  Default is black.
+
+uiBgColor
+  so.addVariable("uiBgColor", "#65B87E|#4E7058");
+
+Determines background color of control panel (the rectangle that holds the
+playback controls) in hexadecimal value.  This parameter is optional.  Value is
+a pipe-delimited string, as shown.  If two colors are configured, the background
+color is a gradient; if one color is configured, the background color is solid.
+Default is a gradient between a light gray (top) to a slightly darker gray (bottom).
+
+autoPlay
+  so.addVariable("autoPlay", "true");
+
+Determines whether video plays automatically (true) or waits for user
+interaction (false).  This parameter is optional.  If set to false, then user
+must initiate playback for single videos or for each video in a playlist.
+Default is false.
+
+loop
+  so.addVariable("loop", "true");
+
+Determines whether video loops automatically (true) or stops at the end of
+playback (false).  This parameter is optional.  If set to true, videos in a
+playlist loop on the playlist, rather than individually.  Default is false.
+
+volume
+  so.addVariable("volume", "5");
+
+Sets the volume of video playback.  This parameter is optional.  Values range
+from 0 (mute) to 100 (full volme).  Default is 100.
+
+maintainAspectRatio
+  so.addVariable("maintainAspectRatio", "false");
+
+Determines whether video maintains aspect ratio (true) or not (false) when SWF
+container is resized to a different aspect.  When set to true, video might
+display in letterbox or pillarbox format.  Default is true.
+
+
+Params:
+
+- allowFullScreen:
+Enable the FullScreen button on the video player.
+
