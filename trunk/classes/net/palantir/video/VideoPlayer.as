@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file
  *
  * Custom module for site-specific configuration.
@@ -165,13 +165,13 @@
 		};
 		// Load Prev
 		private function loadPrev(evt:MouseEvent = null):void {
-			trace(_currentFile);
+			//trace(_currentFile);
 			if (--_currentFile < 0) _currentFile = (_playlist.trackList.children().length() - 1);
 			load(_playlist..track[_currentFile]);
 		};
 		// Load Next
 		private function loadNext(evt:MouseEvent = null):void {
-			trace(_currentFile);
+			//trace(_currentFile);
 			if (++_currentFile > (_playlist.trackList.children().length() - 1)) _currentFile = 0;
 			load(_playlist..track[_currentFile]);
 		};
@@ -286,7 +286,9 @@
 			var param:String = root.loaderInfo.parameters.maintainAspectRatio;
 			if (param == null || getBoolean(param)) {
 				var vw:int = Math.round(_video.videoWidth);
+				vw = (vw == 0) ? sw : vw;
 				var vh:int = Math.round(_video.videoHeight);
+				vh = (vh == 0) ? sh : vh;
 				var ratio:Number = vw / vh;
 				// resize while maintaining aspect ratio
 				if (sw / ratio < sh) {
@@ -330,6 +332,7 @@
 		// onInit
 		private function onInit(evt:Event):void {
 			// Output DEBUGGING
+			/*
 			_output = new TextField();
 			_output.background = true;
 			_output.selectable = false;
@@ -338,7 +341,8 @@
 			fmt.color = 0xFF0000;
 			fmt.size = 32;
 			_output.defaultTextFormat = fmt;
-			//addChild(_output);
+			addChild(_output);
+			*/
 			// Prep
 			this.opaqueBackground = 0x000000;
 			stage.align = StageAlign.TOP_LEFT;
@@ -353,7 +357,6 @@
 
 			// External param: playlist
 			var param:String = root.loaderInfo.parameters.playlist;
-			//var param:String = "playlist.xml";
 			if (param != null) {
 				var xmlLoader:URLLoader = new URLLoader();
 				var xmlReq:URLRequest = new URLRequest(param);
@@ -486,10 +489,10 @@
 			if (_seekSlider) {
 				if (val < 1) {
 					_seekSlider.progressValue = val;
-					_output.text = val.toString();
+					if (_output) _output.text = val.toString();
 				} else {
 					_seekSlider.progressValue = 1;
-					_output.text = "";
+					if (_output) _output.text = "";
 					removeEventListener(Event.ENTER_FRAME, onLoadStream);
 				}
 			}
